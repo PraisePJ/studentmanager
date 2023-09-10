@@ -1,0 +1,144 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<style media="screen">
+  .right{
+    width: 10%;
+    height: 150px;
+  }
+  .mid{
+    width: 70%;
+    height: 464px;
+    border-color: #212529;
+  }
+  .left{
+    width: 20%;
+    height: wrap-content;
+  }
+  .body{
+    background-image: linear-gradient(120deg, black,  rgba(0, 0, 0, 0.5)), url('{% static 'images/1426870.png' %}');
+    background-size: cover;
+    height: 100%;
+  }
+  #nav{
+    height: 70px;
+    width: 100%;
+  }
+  .nav-right{
+    height: 100%;
+    width: 80%;
+  }
+  .nav-left{
+    height: 100%;
+    width: 20%;
+  }
+  a{
+    text-decoration: none;
+  }
+  .button{
+    width: 100%;
+    height: 50px;
+    border: none;
+  }
+  .modal{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .resultModal{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+  }
+  .modal-content{
+    width: 500px;
+    height: 600px;
+    margin: 15%;
+    display: block;
+
+  }
+  .modal-contentr{
+    width: 500px;
+    height: wrap-content;
+    margin: 15%;
+    display: block;
+
+  }
+</style>
+<div class="body d-block pb-5">
+  <div id="nav" class="d-flex pt-2 pb-2">
+    <div class="nav-left ps-5">
+      <img src="{% static 'images/devhub.png' %}" alt="" height="100%" width="50px">
+    </div>
+    <div class="nav-right pe-3">
+      <a href="{{request.META.HTTP_REFERER}}">
+        <button style="float: right; height: 100%" class="btn btn-primary text-light" type="button" name="button">Go Back</button>
+      </a>
+    </div>
+  </div>
+  <hr>
+
+  <div class="d-flex">
+    <div class="left ms-2">
+      <a align="center" href="{% url 'home' %}"><button style="border: none" class="button text-light btn-primary" type="button" name="button">Home</button></a>
+      <button id="result" class="button text-light btn-primary" type="button" name="button">Check Results</button><br>
+      <button id="project" style="border: none" class="button text-light btn-primary" type="button" name="button">Projects</button>
+
+    </div>
+    <div class="mid ms-2 me-2 card bg-transparent">
+      {% if user.is_authenticated %}
+      <h3 class="text-dark ps-2">Welcome <span class="text-secondary">{{request.user}}</span>,</h3>
+      {% else %}
+      <h3 class="text-light ps-2">Welcome <span class="text-secondary">Guest</span>,</h3>
+      {% endif %}
+      <div class="card-header bg-dark">
+        <h5 class="text-light">Student Information</h5>
+      </div>
+      <div align="left" class="ps-5 pt-5 text-light">
+        <h6 class="pb-3">Name: {{student.name}}</h6>
+        <h6 class="pb-3">Level: {{student.level}}</h6>
+        <h6 class="pb-3">Department: {{student.department}}</h6>
+        <h6 class="pb-3">Degree: B.Eng</h6>
+      </div>
+
+    </div>
+    <div class="right me-2 card bg-danger">
+
+    </div>
+  </div>
+</div>
+<!--Modals-->
+<div align="center" id="projectModal" class="modal">
+  <div class="modal-content right pe-5 pt-3 ps-5 pb-5">
+    <h1>{{header}}<hr class="bg-primary"></h1>
+
+    {% for project in projects %}
+
+    <div align="left" style="width: 100%; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .1); border: none" class="card p-2 mb-5">
+        <div class="card-title text-lead text-dark"><b>{{project.title}}</b></div>
+        <div class="card-body">{{project.body}}</div>
+        <div style="float: right" class="d-flex">
+            <button class="btn btn-success me-2">Accept</button>
+            <button class="btn btn-danger">Reject</button>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div align="center" id="resultModal" class="modal">
+  <div class="modal-contentr bg-light right pe-5 pt-3 ps-5 pb-5">
+    <h1>Results<hr class="bg-primary"></h1>
+
+    {% for result in results %}
+
+    <div align="left" style="width: 100%; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .1); border: none" class="card p-2 mb-5">
+        {{result.student_id}}
+        <img src="{{result.img.url}}" alt="" width="100%" height="200px">
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/app.js' %}">
+
+</script>

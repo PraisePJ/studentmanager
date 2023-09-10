@@ -1,0 +1,17 @@
+<div class="mid ms-2 me-2 card bg-transparent">
+      {% if user.is_authenticated %}
+      <h3 class="text-light ps-2">Welcome <span class="text-secondary">{{user}}</span>,</h3>
+      {% else %}
+      <h3 class="text-light ps-2">Welcome <span class="text-secondary">Guest</span>,</h3>
+      {% endif %}
+      <div class="card-header bg-dark">
+        <h5 class="text-light">Student Information</h5>
+      </div>
+      <div align="left" class="ps-5 pt-5 text-light">
+        <h6 class="pb-3">Name: Praise Sunday</h6>
+        <h6 class="pb-3">Level: 400</h6>
+        <h6 class="pb-3">Department: Mechatronics</h6>
+        <h6 class="pb-3">Degree: B.Eng</h6>
+      </div>
+
+    </div>

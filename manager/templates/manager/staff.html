@@ -1,0 +1,124 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<style media="screen">
+  .right{
+    width: 10%;
+    height: 150px;
+  }
+  .mid{
+    width: 70%;
+    height: 464px;
+    border-color: #212529;
+  }
+  .left{
+    width: 20%;
+    height: wrap-content;
+  }
+  .body{
+    background-image: linear-gradient(120deg, black,  rgba(0, 0, 0, 0.5)), url('{% static 'images/1426870.png' %}');
+    background-size: cover;
+    height: 100%;
+  }
+  #nav{
+    height: 70px;
+    width: 100%;
+  }
+  .nav-right{
+    height: 100%;
+    width: 80%;
+  }
+  .nav-left{
+    height: 100%;
+    width: 20%;
+  }
+  a{
+    text-decoration: none;
+  }
+  .button{
+    width: 100%;
+    height: 50px;
+    border: none;
+  }
+  .modal{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content{
+    width: 500px;
+    height: 600px;
+    margin: 15%;
+    display: block;
+  }
+</style>
+<div class="body d-block pb-5">
+  <div id="nav" class="d-flex pt-2 pb-2">
+    <div class="nav-left ps-5">
+      <img src="{% static 'images/devhub.png' %}" alt="" height="100%" width="50px">
+    </div>
+    <div class="nav-right pe-3">
+      
+    </div>
+  </div>
+  <hr>
+
+  <div class="d-flex">
+    <div class="left ms-2">
+      <button id="upload" class="button text-light btn-primary" type="button" name="button">Upload Results</button><br>
+      <button id="create" class="button text-light btn-primary" type="button" name="button">Create Projects</button>
+
+    </div>
+    <div class="mid ms-2 me-2 card bg-transparent">
+      {% if user.is_authenticated %}
+      <h3 class="text-dark ps-2">Welcome <span class="text-secondary">{{user}}</span>,</h3>
+      {% else %}
+      <h3 class="text-light ps-2">Welcome <span class="text-secondary">Guest</span>,</h3>
+      {% endif %}
+      <div class="card-header bg-dark">
+        <h5 class="text-light">Staff Information</h5>
+      </div>
+      <div align="left" class="ps-5 pt-5 text-light">
+        <h6 class="pb-3">Name: Praise Sunday</h6>
+        <h6 class="pb-3">Level: 400</h6>
+        <h6 class="pb-3">Department: Mechatronics</h6>
+        <h6 class="pb-3">Degree: B.Eng</h6>
+      </div>
+
+    </div>
+    <div class="right me-2 card bg-danger">
+
+    </div>
+  </div>
+</div>
+<!-- Modals -->
+<div align="center" id="createModal" class="modal">
+  <div class="modal-content right pe-5 pt-3 ps-5 pb-5">
+    <h1>Create Project<hr class="bg-primary"></h1>
+    <div align="left" style="width: 100%; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .1); border: none" class="card p-2 mb-5">
+        <form class="" method="post">
+          {% csrf_token %}
+          <input required=True class="mb-3" style="height: 35px; width: 100%; border-radius: 5px; border: solid 1px #999999; padding: 10px;" placeholder="Title..." type="text" name="title"><br>
+          <textarea required=True class="mb-3" style="width: 100%; border-radius: 5px; border: solid 1px #999999; padding: 10px;" placeholder="Body..." name="body" rows="8" cols="80"></textarea><br>
+          <input required=True class="mb-3" style="height: 35px; width: 100%; border-radius: 5px; border: solid 1px #999999; padding: 10px;" placeholder="Author..." type="text" name="author"><br>
+          <input required=True class="mb-3" style="height: 35px; width: 100%; border-radius: 5px; border: solid 1px #999999; padding: 10px;" placeholder="Level..." type="number" name="level"><br>
+          <input class="mb-3 btn btn-lg btn-primary w-100" style="" type="submit" value="Create">
+        </form>
+    </div>
+  </div>
+</div>
+
+
+<div align="center" id="uploadModal" class="modal">
+  <div class="modal-content right pe-5 pt-3 ps-5 pb-5">
+    <h1>Upload Result<hr class="bg-primary"></h1>
+    <div align="left" style="width: 100%; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .1); border: none" class="card p-2 mb-5">
+        <form class="" method="post">
+          {% csrf_token %}
+          <input class="mb-3" required=True style="height: 35px; width: 100%; border-radius: 5px; border: solid 1px #999999; padding: 10px;" type="text" name="student_id" value="" placeholder="Student ID...">
+          <input class="mb-3" accept="image/*" required=True style="height: wrap-content; width: 100%; border-radius: 5px; border: solid 1px #999999; padding: 10px;" type="file" name="img" value="" placeholder="Student Result File...">
+          <input class="mb-3 btn btn-lg btn-primary w-100"type="submit" name="" value="Upload">
+        </form>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/staff.js' %}" charset="utf-8"></script>

@@ -1,0 +1,81 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<style media="screen">
+  #right{
+    width: 50%;
+    height: 500px;
+    justify-content: center;
+  }
+  #left{
+    width: 50%;
+    height: 500px;
+    padding-top: 200px;
+  }
+  #mid{
+    width: 300px;
+    height: 500px;
+    margin-top: 45px;
+    margin-left: 30%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 70px;
+  }
+  #nav{
+    height: 70px;
+    width: 100%;
+  }
+  #land{
+    background-image: linear-gradient(120deg, black,  rgba(0, 0, 0, 0.5)), url('{% static 'images/1426870.png' %}');
+    background-size: cover;
+    height: 100%;
+  }
+  .nav-right{
+    height: 100%;
+    width: 80%;
+  }
+  .nav-left{
+    height: 100%;
+    width: 20%;
+  }
+  @media screen and (max-width: 765px){
+    #left{
+      width: 100%;
+      height: 250px;
+    }
+    #land{
+      height: wrap-content;
+    }
+  }
+</style>
+<div id="land" class="">
+  <div id="nav" class="d-flex pt-2 pb-2">
+    <div class="nav-left ps-5">
+      <img src="{% static 'images/devhub.png' %}" alt="" height="100%" width="50px">
+    </div>
+    <div class="nav-right pe-3">
+      <a href="{% url 'staff-login' %}">
+        <button style="float: right; height: 100%" class="btn btn-primary text-light" type="button" name="button">Staff Login</button>
+      </a>
+    </div>
+  </div>
+  <div class="d-lg-flex d-md-block d-sm-block">
+    <div align="center" id="left" class="center">
+      <h1 style="float: center;" class="text-light">Welcome to the <span class="text-primary">Developer Hub</span></h1>
+      <h5 style="float: center;" class="text-light">We push the boundaries of robotics here...</h5>
+    </div>
+    <div id="right" class="">
+      <div align="center" id="mid" class="card">
+        <div class="">
+          <img style="float: center;" src="{% static 'images/devhubwhite.png' %}" alt="" height="100px" width="100px">
+        </div>
+        <h5 class="card-title mb-5 text-dark" align="center">Student Login</h5>
+        <form class="" action="" method="post">
+          {% csrf_token %}
+          <input class="p-2 mb-3" type="text" name="student_id" value="" required=True><br>
+          <input class="p-2 mb-3" type="password" name="student_password" value="" required=True><br>
+          <input class="btn btn-primary" type="submit" name="" value="Login">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

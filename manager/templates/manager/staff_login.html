@@ -1,0 +1,54 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<style media="screen">
+  #nav{
+    height: 70px;
+    width: 100%;
+  }
+  #land{
+    background-image: linear-gradient(120deg, black,  rgba(0, 0, 0, 0.5)), url('{% static 'images/1426870.png' %}');
+    background-size: cover;
+    height: 100%;
+  }
+  #right{
+    width: 100%;
+  }
+  #mid{
+    width: 300px;
+    height: 400px;
+  }
+  .nav-left{
+    width: 20%;
+  }
+  .nav-right{
+    width: 80%;
+  }
+</style>
+<div id="land" class="container-fluid d-block">
+  <div id="nav" class="d-flex pt-2 pb-2">
+    <div class="nav-left ps-5">
+      <img src="{% static 'images/devhub.png' %}" alt="" height="100%" width="50px">
+    </div>
+    <div class="nav-right pe-3">
+      <a href="{{request.META.HTTP_REFERER}}">
+        <button style="float: right; height: 100%" class="btn btn-primary text-light" type="button" name="button">Go Back</button>
+      </a>
+    </div>
+  </div>
+  <div class="d-flex pt-5">
+    <div align="center" id="right" class="">
+      <div align="center" id="mid" class="card pt-5">
+        <div class="">
+          <img style="float: center;" src="{% static 'images/devhubwhite.png' %}" alt="" height="100px" width="100px">
+        </div>
+        <h5 class="card-title mb-5 text-dark" align="center">Staff Login</h5>
+        <form class="" action="" method="post">
+          {% csrf_token %}
+          <input class="p-2 mb-3" type="text" name="staff_id" value=""><br>
+          <input class="p-2 mb-3" type="password" name="staff_password" value=""><br>
+          <input class="btn btn-primary w-80" type="submit" name="" value="Login">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
