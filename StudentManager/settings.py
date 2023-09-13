@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'StudentManager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'studentmanager',
+        'NAME': 'postgres',
         'USER': 'student_manager_duy1_user',
         'PASSWORD': 'w1NF8A9ubLrWiFL7JxEZcQjl4DXBNc5j',
         'HOST': 'dpg-ck0mdgm3ktkc73fhp62g-a',
