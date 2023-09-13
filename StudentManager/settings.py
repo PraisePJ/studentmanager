@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'manager',
-    'psycopg2',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
