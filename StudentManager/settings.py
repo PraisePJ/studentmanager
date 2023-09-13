@@ -82,6 +82,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': 'dpg-ck0mdgm3ktkc73fhp62g-a',
         'PASSWORD': 'w1NF8A9ubLrWiFL7JxEZcQjl4DXBNc5j',
+        'USER': 'student_manager_duy1_user',
+        'NAME': 'student_manager_duy1',
+        'PORT': '5432',
     }
 }
 
