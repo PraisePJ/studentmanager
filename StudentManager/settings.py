@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'StudentManager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'dpg-ck0mdgm3ktkc73fhp62g-a',
         'PASSWORD': 'w1NF8A9ubLrWiFL7JxEZcQjl4DXBNc5j',
         'USER': 'student_manager_duy1_user',
