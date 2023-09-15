@@ -15,10 +15,7 @@ def Home(request):
 
 
         try:
-            user = User.objects.get(username=student_id, groups=2)
-
             user = authenticate(request, groups=2, username=student_id, password=student_password)
-            group = Group.objects.all()
 
             if user is not None:
                 login(request, user)
@@ -27,8 +24,6 @@ def Home(request):
 
             else:
                 print('User is not a Student...')
-
-            print(f'{user} is good to go...')
 
         except Exception as e:
             print('User not found...')
