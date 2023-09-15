@@ -11,3 +11,5 @@ sqlparse==0.4.3
 whitenoise==6.2.0
 
 psycopg2==2.9.7
+
+dj-database-url==2.1.0
